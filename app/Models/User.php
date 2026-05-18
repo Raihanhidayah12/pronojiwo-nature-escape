@@ -2,48 +2,55 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Database\Factories\UserFactory;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+    protected $table      = 'users';
+    protected $primaryKey = 'id_user';
+    public    $incrementing = true;
+    protected $keyType    = 'int';
+
     protected $fillable = [
-        'name',
+        'nama_lengkap',
         'email',
         'password',
+        'no_telepon',
+        'role',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    protected $casts = [
+        'password' => 'hashed',
+    ];
+
+    // Apakah user adalah admin
+    public function isAdmin(): bool
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return in_array($this->role, ['admin', 'super_admin']);
+    }
+
+    // Apakah user adalah pengunjung
+    public function isPengunjung(): bool
+    {
+        return $this->role === 'pengunjung';
+    }
+
+    // Relasi: User punya banyak Booking
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'id_user', 'id_user');
+    }
+
+    // Relasi: User punya banyak Review
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'id_user', 'id_user');
     }
 }
