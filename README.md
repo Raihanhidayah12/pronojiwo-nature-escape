@@ -45,6 +45,7 @@
 | **Inertia.js** | 2.x | Jembatan Laravel ↔ React (SPA tanpa API) |
 | **MySQL** | 8.x | Database relasional |
 | **Laravel Breeze** | — | Starter kit autentikasi |
+| **Vercel PHP** | 0.7.x | Serverless Runtime Engine |
 
 ### Frontend
 | Teknologi | Versi | Kegunaan |
@@ -74,11 +75,14 @@ users
 destinasis
 ├── id_destinasi (PK)
 ├── nama_wisata
+├── kategori
 ├── deskripsi
 ├── lokasi_rute
 ├── harga_tiket
-├── kapasitas
-├── foto
+├── kapasitas_harian
+├── status
+├── fasilitas
+├── rating_asli
 └── timestamps
 
 bookings
@@ -183,13 +187,13 @@ pronojiwo-nature-escape/
 - Tidak ada white flash saat navigasi (Inertia SPA)
 - Fully responsive (mobile & desktop)
 
-### 🗺️ Landing Page
-- Hero section dengan foto lokal Pronojiwo + parallax effect
-- Kartu destinasi dengan filter kategori (Air Terjun, Panorama, Hutan)
-- Form pemesanan tiket inline dengan kalender custom
-- Animated stats counter
-- Testimoni pengunjung
-- Formulir kontak
+### 🗺️ Landing Page & Dashboard
+- Hero section elegan dengan *wave divider* dan efek parallax
+- Kartu destinasi dinamis (otomatis sinkron dengan kategori dari database)
+- Form pemesanan tiket interaktif dengan kalkulasi instan
+- Animated stats counter dan ulasan pengunjung
+- Dashboard Admin terpadu untuk kelola data wisata (CRUD dengan form dinamis)
+- Dashboard Pengunjung untuk tracking status e-tiket dan pembayaran
 
 ---
 
@@ -252,6 +256,25 @@ npm run dev                # Terminal 2 → Vite dev server
 | `http://127.0.0.1:8000/login` | Halaman masuk |
 | `http://127.0.0.1:8000/register` | Halaman daftar |
 | `http://127.0.0.1:8000/dashboard` | Dashboard (perlu login) |
+
+---
+
+## ☁️ Deployment (Vercel)
+
+Proyek ini sudah dikonfigurasi untuk berjalan di Vercel menggunakan `vercel-php`. File konfigurasi telah disediakan dalam `vercel.json`.
+
+```json
+{
+  "version": 2,
+  "outputDirectory": "public",
+  "builds": [
+    { "src": "public/index.php", "use": "vercel-php@0.7.3" },
+    { "src": "public/**", "use": "@vercel/static" }
+  ]
+}
+```
+
+Pastikan Anda menyetel environment variables (`APP_KEY`, informasi koneksi `DB_*`, dll) pada dashboard Vercel Anda sebelum melakukan deployment.
 
 ---
 
