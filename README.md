@@ -1,56 +1,43 @@
-<div align="center">
-
 # 🌿 Pronojiwo Nature Escape
 
-**Platform wisata alam digital untuk menjelajahi surga tersembunyi Pronojiwo, Lumajang, Jawa Timur.**
+> Platform wisata alam digital untuk menjelajahi surga tersembunyi Pronojiwo, Lumajang, Jawa Timur — dilengkapi sistem pemesanan tiket online, ulasan pengunjung, dan galeri destinasi.
 
-Sistem pemesanan tiket online, dasbor manajemen penuh, galeri destinasi, dan ulasan pengunjung — semuanya dalam satu aplikasi web modern.
-
-[![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
-[![React](https://img.shields.io/badge/React-18.x-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org)
-[![Inertia.js](https://img.shields.io/badge/Inertia.js-2.x-7C3AED?style=for-the-badge&logo=inertia&logoColor=white)](https://inertiajs.com)
-[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.x-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
-[![MySQL](https://img.shields.io/badge/MySQL-8.x-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://mysql.com)
-[![Vercel](https://img.shields.io/badge/Vercel-Deploy-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com)
-
-</div>
+![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![React](https://img.shields.io/badge/React-18.x-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Inertia.js](https://img.shields.io/badge/Inertia.js-2.x-7C3AED?style=for-the-badge)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.x-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8.x-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Headless UI](https://img.shields.io/badge/Headless%20UI-2.x-0F172A?style=for-the-badge)
+![Framer Motion](https://img.shields.io/badge/Framer%20Motion-11.x-0055FF?style=for-the-badge)
+![Vercel](https://img.shields.io/badge/Vercel-Deploy-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
 ---
 
 ## 📖 Tentang Proyek
 
-**Pronojiwo Nature Escape** adalah aplikasi web full-stack yang dibangun untuk mempromosikan dan memfasilitasi kunjungan wisata alam di Kecamatan Pronojiwo, Kabupaten Lumajang, Jawa Timur.
+**Pronojiwo Nature Escape** adalah aplikasi web full-stack yang dibangun untuk mempromosikan dan memfasilitasi kunjungan wisata alam di Kecamatan Pronojiwo, Lumajang, Jawa Timur. Proyek ini mencakup:
 
-Pronojiwo merupakan kawasan alam yang kaya dengan Air Terjun Tumpak Sewu — sering dijuluki *"Niagara-nya Indonesia"* — sebagai daya tarik utamanya. Proyek ini hadir sebagai solusi digital untuk mengelola dan mempopulerkan destinasi-destinasi wisata yang ada di kawasan ini.
-
-### Fitur Unggulan
-
-| Modul | Deskripsi |
-|-------|-----------|
-| 🌄 **Landing Page Modern** | Halaman beranda premium dengan hero section, wave divider, parallax effect, dan filter destinasi dinamis |
-| 🎟️ **E-Tiket Online** | Sistem pemesanan tiket dengan kalkulasi biaya instan, upload bukti bayar, dan status tracking |
-| 👤 **Multi-Role Auth** | Autentikasi berlapis: Pengunjung / Admin / Super Admin dengan akses terkontrol |
-| 📊 **Dashboard Admin** | Pengelolaan data destinasi (CRUD penuh dengan kategori), verifikasi pembayaran, dan manajemen pengguna |
-| 🧑‍💼 **Dashboard Pengunjung** | Riwayat booking, status e-tiket, upload bukti pembayaran, dan penulisan ulasan |
-| ⭐ **Sistem Ulasan** | Rating bintang dan ulasan teks per destinasi, hanya bisa dilakukan oleh pengunjung yang sudah memesan |
-| 🖼️ **Galeri Destinasi** | Foto utama setiap destinasi yang bisa dikelola langsung dari dasbor admin |
-| 🏷️ **Kode Promo** | Sistem diskon berbasis kode dengan batasan persentase, tanggal kadaluarsa, dan destinasi tertentu |
-| 📬 **Pesan Instan** | Formulir kontak pengunjung dengan fitur balasan email langsung dari admin |
+- 🗺️ **Halaman Landing Page** informatif dengan informasi destinasi wisata
+- 🎟️ **Sistem E-Tiket** untuk pemesanan tiket masuk secara online
+- 👤 **Autentikasi Pengguna** dengan role-based access (Pengunjung / Admin / Super Admin)
+- ⭐ **Sistem Ulasan** dari para pengunjung destinasi
+- 🖼️ **Galeri Destinasi** untuk menampilkan foto-foto wisata
+- 📊 **Dashboard Admin** untuk pengelolaan data
+- 💬 **Sistem Pesan Instan** untuk komunikasi pengunjung dan admin
+- 🏷️ **Sistem Kode Promo** untuk diskon khusus
 
 ---
 
-## 🏞️ Destinasi Wisata
+## 🏞️ Destinasi Wisata yang Tersedia
 
-| Destinasi | Kategori | Estimasi Harga |
-|-----------|----------|---------------|
+| Destinasi | Kategori | Harga |
+|-----------|----------|-------|
 | Air Terjun Tumpak Sewu | Air Terjun | Rp 20.000 |
-| Panorama Kapas Biru | Panorama / Viewpoint | Rp 15.000 |
+| Panorama Kapas Biru | Panorama | Rp 15.000 |
 | Air Terjun Kapas Biru | Air Terjun | Rp 15.000 |
 | Kabut Pelangi | Air Terjun | Rp 10.000 |
-| Hutan Pinus Pronojiwo | Hutan Pinus / Alam | Rp 10.000 |
-| Bukit Sriti | Panorama / Viewpoint | Rp 15.000 |
-
-> Kategori destinasi kini bisa diatur langsung oleh admin melalui dasbor (Air Terjun, Panorama, Hutan, Gunung, Edukasi).
+| Hutan Pinus Pronojiwo | Hutan | Rp 10.000 |
+| Bukit Sriti | Panorama | Rp 15.000 |
 
 ---
 
@@ -59,100 +46,99 @@ Pronojiwo merupakan kawasan alam yang kaya dengan Air Terjun Tumpak Sewu — ser
 ### Backend
 | Teknologi | Versi | Kegunaan |
 |-----------|-------|----------|
-| **Laravel** | 12.x | PHP Framework — routing, ORM, auth, validasi |
-| **Inertia.js** | 2.x | Jembatan Laravel ↔ React tanpa REST API terpisah |
-| **MySQL** | 8.x | Database relasional utama |
+| **Laravel** | 12.x | PHP Framework utama |
+| **Inertia.js** | 2.x | Jembatan Laravel ↔ React (SPA tanpa API) |
+| **MySQL** | 8.x | Database relasional |
 | **Laravel Breeze** | — | Starter kit autentikasi |
 | **Laravel Mail** | — | Pengiriman email balasan pesan admin |
-| **Vercel PHP** | 0.7.3 | Serverless runtime untuk deployment di Vercel |
+| **Vercel PHP** | 0.7.3 | Serverless Runtime Engine |
 
 ### Frontend
 | Teknologi | Versi | Kegunaan |
 |-----------|-------|----------|
-| **React** | 18.x | UI Library berbasis komponen |
-| **Vite** | 7.x | Build tool & dev server cepat |
-| **TailwindCSS** | 3.x | Utility-first CSS framework |
-| **Lucide React** | latest | Icon set yang ringan dan konsisten |
+| **React** | 18.x | UI Library |
+| **Vite** | 7.x | Build tool & dev server |
+| **TailwindCSS** | 3.x | Utility-first CSS |
+| **Headless UI** | 2.x | Komponen UI accessible |
+| **Framer Motion** | 11.x | Animasi |
+| **Lucide React** | latest | Icon library |
 
 ---
 
-## 🗄️ Skema Database
+## 🗄️ Struktur Database
 
 ```
 users
-├── id_user         (PK)
+├── id_user (PK)
 ├── nama_lengkap
-├── email           (unique)
+├── email (unique)
 ├── password
-├── no_telepon      (nullable)
-├── role            (enum: pengunjung | admin | super_admin)
+├── no_telepon (nullable)
+├── role (enum: pengunjung | admin | super_admin)
 ├── remember_token
 └── timestamps
 
 destinasis
-├── id_destinasi    (PK)
+├── id_destinasi (PK)
 ├── nama_wisata
-├── kategori        (Air Terjun | Panorama | Hutan | Gunung | Edukasi)
+├── kategori
 ├── deskripsi
 ├── lokasi_rute
 ├── harga_tiket
 ├── kapasitas_harian
-├── fasilitas       (pisahkan dengan koma)
+├── status
+├── fasilitas
 ├── rating_asli
-├── status          (aktif | non-aktif)
 └── timestamps
 
 bookings
-├── id_booking      (PK)
-├── id_user         (FK → users)
-├── id_destinasi    (FK → destinasis)
+├── id_booking (PK)
+├── id_user (FK → users)
+├── id_destinasi (FK → destinasis)
 ├── tanggal_kunjungan
 ├── jumlah_tiket
 ├── total_harga
-├── status_booking  (menunggu | dikonfirmasi | dibatalkan)
+├── status
 └── timestamps
 
 pembayarans
-├── id_pembayaran   (PK)
-├── id_booking      (FK → bookings)
+├── id_pembayaran (PK)
+├── id_booking (FK → bookings)
 ├── metode_pembayaran
-├── bukti_pembayaran
-├── status_pembayaran (menunggu_verifikasi | lunas | gagal)
-├── tanggal_bayar
+├── status_pembayaran
+├── jumlah_bayar
 └── timestamps
 
 reviews
-├── id_review       (PK)
-├── id_user         (FK → users)
-├── id_destinasi    (FK → destinasis)
-├── id_booking      (FK → bookings, nullable)
-├── rating          (1–5)
+├── id_review (PK)
+├── id_user (FK → users)
+├── id_destinasi (FK → destinasis)
+├── rating
 ├── ulasan
 └── timestamps
 
 galeris
-├── id_galeri       (PK)
-├── id_destinasi    (FK → destinasis)
-├── url_foto
-├── keterangan
+├── id_galeri (PK)
+├── id_destinasi (FK → destinasis)
+├── foto
 └── timestamps
 
 pesans
-├── id_pesan        (PK)
+├── id_pesan (PK)
 ├── nama_lengkap
 ├── email
 ├── subjek
 ├── pesan
 ├── balasan
-├── status          (belum_dibalas | sudah_dibalas)
+├── status (belum_dibalas | sudah_dibalas)
 └── timestamps
 
 discounts
-├── id_diskon       (PK)
-├── kode_diskon     (unique)
+├── id_diskon (PK)
+├── kode_diskon (unique)
 ├── persentase
-├── status          (aktif | tidak_aktif)
-├── id_destinasi    (FK → destinasis, nullable)
+├── status (aktif | tidak_aktif)
+├── id_destinasi (FK → destinasis, nullable)
 ├── berlaku_sampai
 └── timestamps
 ```
@@ -166,12 +152,20 @@ pronojiwo-nature-escape/
 ├── app/
 │   ├── Http/
 │   │   ├── Controllers/
-│   │   │   ├── Auth/                        # Login, Register, Password Reset
+│   │   │   ├── Auth/                       # Autentikasi (Login, Register, dll)
 │   │   │   ├── AdminDashboardController.php # CRUD destinasi, booking, ulasan, dll
 │   │   │   ├── DestinasiController.php      # Data untuk landing page publik
-│   │   │   └── ...
-│   │   └── Requests/Auth/LoginRequest.php
-│   ├── Mail/BalasanPesanMail.php            # Template email balasan admin
+│   │   │   ├── BookingController.php
+│   │   │   ├── PembayaranController.php
+│   │   │   ├── ReviewController.php
+│   │   │   ├── GaleriController.php
+│   │   │   ├── PesanController.php
+│   │   │   └── DiscountController.php
+│   │   └── Requests/
+│   │       └── Auth/
+│   │           └── LoginRequest.php         # Custom login validation
+│   ├── Mail/
+│   │   └── BalasanPesanMail.php             # Template email balasan admin
 │   └── Models/
 │       ├── User.php
 │       ├── Destinasi.php
@@ -183,74 +177,75 @@ pronojiwo-nature-escape/
 │       ├── Discount.php
 │       └── LogAktivitas.php
 ├── database/
-│   ├── migrations/                          # Skema tabel
-│   └── seeders/DestinasiSeeder.php
+│   ├── migrations/                          # Skema tabel database
+│   └── seeders/
+│       ├── DestinasiSeeder.php              # Data awal destinasi
+│       └── DatabaseSeeder.php               # Seed utama
 ├── resources/
+│   ├── css/
+│   │   └── app.css                          # Global styles
 │   └── js/
 │       └── Pages/
 │           ├── index.jsx                    # Landing page utama (publik)
 │           ├── UserDashboard.jsx            # Dashboard pengunjung
 │           ├── Admin/
-│           │   └── AdminDashboard.jsx       # Dashboard admin/super admin
-│           └── Auth/
-│               ├── Login.jsx
-│               └── Register.jsx
-├── routes/
-│   ├── web.php
-│   └── auth.php
+│   │   │   └── AdminDashboard.jsx           # Dashboard admin/super admin
+│   │   └── Auth/
+│   │       ├── Login.jsx                    # Halaman login (redesign premium)
+│   │       └── Register.jsx                 # Halaman daftar (redesign premium)
 ├── public/
-│   └── images/download.jpg                 # Foto hero Pronojiwo
-└── vercel.json                             # Konfigurasi deployment Vercel
+│   └── images/
+│       └── download.jpg                     # Foto hero Pronojiwo
+├── routes/
+│   ├── web.php                              # Route utama
+│   └── auth.php                             # Route autentikasi
+└── vercel.json                              # Konfigurasi deployment Vercel
 ```
 
 ---
 
-## 👥 Role Pengguna
-
-| Role | Akses |
-|------|-------|
-| `pengunjung` | Melihat destinasi, memesan tiket, upload bukti bayar, menulis ulasan, kirim pesan |
-| `admin` | Kelola destinasi (CRUD + kategori), verifikasi pembayaran, balas pesan, kelola ulasan |
-| `super_admin` | Semua akses admin + manajemen akun pengguna, kode promo, dan log aktivitas |
-
-> Akun dengan role `admin` atau `super_admin` secara otomatis diarahkan ke **Admin Dashboard** setelah login.
-
----
-
-## ✨ Fitur Detail
+## ✨ Fitur Utama
 
 ### 🔐 Autentikasi
-- Registrasi dengan: nama lengkap, email, nomor telepon, password
-- Role otomatis `pengunjung` saat mendaftar
-- Login dengan validasi pesan kontekstual (email tidak ditemukan / password salah / rate limit)
-- Remember Me & Reset Password
-- Proteksi route berbasis role (middleware)
+- **Registrasi** dengan field: nama lengkap, email, nomor telepon, password
+- **Role otomatis** `pengunjung` saat daftar baru
+- **Login** dengan validasi pesan spesifik:
+  - Email tidak ditemukan → diarahkan untuk daftar
+  - Password salah → notifikasi kuning
+  - Rate limiting → 5 percobaan max
+- **Remember Me** dengan `remember_token`
+- **Reset Password** tersedia
 
-### 🗺️ Landing Page
-- Hero section fullscreen dengan foto lokal + parallax mouse effect + gradient overlay
-- Wave divider SVG animatif yang memisahkan antar section
-- Statistik animasi: total destinasi, ulasan, dan rata-rata rating (data real dari database)
-- Kartu destinasi dengan filter kategori dinamis (data kategori langsung dari DB)
-- Section testimoni slider otomatis
-- Form kontak yang terkirim ke inbox admin
+### 🎨 UI/UX Premium
+- Split-screen layout pada halaman Login & Register
+- Glassmorphism design dengan tema emerald dark
+- **Password Strength Meter** di halaman registrasi
+- Animasi `fadeUp` bertahap per elemen
+- Tidak ada white flash saat navigasi (Inertia SPA)
+- Fully responsive (mobile & desktop)
 
-### 📊 Dashboard Admin
-- Kartu metrik real-time: pendapatan bulan ini, tiket terjual, antrean verifikasi, destinasi aktif
-- **CRUD Destinasi** lengkap: nama, kategori (dropdown), deskripsi, harga, kapasitas, fasilitas, rating, foto upload
-- Tabel verifikasi pembayaran dengan modal detail (foto bukti, data booking, tombol Terima/Tolak)
-- Manajemen ulasan pengunjung
-- Inbox pesan dengan fitur balas (otomatis kirim email ke pengirim)
-- **Super Admin:** manajemen akun user, kode promo, dan log aktivitas sistem
+### 🗺️ Landing Page & Dashboard
+- Hero section elegan dengan *wave divider* dan efek parallax
+- Kartu destinasi dinamis (otomatis sinkron dengan kategori dari database)
+- Form pemesanan tiket interaktif dengan kalkulasi instan
+- Animated stats counter dan ulasan pengunjung
+- Dashboard Admin terpadu untuk kelola data wisata (CRUD dengan form dinamis)
+- Dashboard Pengunjung untuk tracking status e-tiket dan pembayaran
 
-### 🧑‍💼 Dashboard Pengunjung
-- Kartu ringkasan: total booking, tiket aktif, destinasi dikunjungi
-- Riwayat booking lengkap dengan status real-time
-- Upload bukti transfer pembayaran
-- Penulisan ulasan per destinasi (hanya bisa 1x per booking)
+### 💬 Sistem Pesan Instan
+- Formulir kontak untuk pengunjung
+- Admin dapat membalas pesan melalui email langsung
+- Status pesan (belum_dibalas / sudah_dibalas)
+
+### 🏷️ Sistem Kode Promo
+- Buat kode diskon dengan persentase tertentu
+- Tentukan tanggal berlaku
+- Terapkan ke destinasi tertentu atau semua destinasi
+- Status aktif/tidak aktif
 
 ---
 
-## 🚀 Instalasi Lokal
+## 🚀 Cara Instalasi & Menjalankan
 
 ### Prasyarat
 - PHP >= 8.2
@@ -266,13 +261,13 @@ pronojiwo-nature-escape/
 git clone https://github.com/Raihanhidayah12/pronojiwo-nature-escape.git
 cd pronojiwo-nature-escape
 
-# 2. Install dependensi PHP
+# 2. Install dependencies PHP
 composer install
 
-# 3. Install dependensi Node.js
+# 3. Install dependencies Node.js
 npm install
 
-# 4. Salin file konfigurasi
+# 4. Salin file environment
 cp .env.example .env
 
 # 5. Generate application key
@@ -281,7 +276,7 @@ php artisan key:generate
 
 ### Konfigurasi Database
 
-Edit file `.env`:
+Edit file `.env` dan sesuaikan dengan konfigurasi database lokal Anda:
 
 ```env
 DB_CONNECTION=mysql
@@ -296,27 +291,25 @@ DB_PASSWORD=
 # 6. Jalankan migrasi & seeder
 php artisan migrate --seed
 
-# 7. Jalankan kedua server secara bersamaan (dua terminal terpisah)
-php artisan serve     # → http://127.0.0.1:8000
-npm run dev           # → Vite HMR dev server
+# 7. Jalankan server (dua terminal terpisah)
+php artisan serve          # Terminal 1 → http://127.0.0.1:8000
+npm run dev                # Terminal 2 → Vite dev server
 ```
 
-### URL Akses
+### Akses Aplikasi
 
 | URL | Keterangan |
 |-----|------------|
-| `http://127.0.0.1:8000` | Landing page publik |
+| `http://127.0.0.1:8000` | Landing page |
 | `http://127.0.0.1:8000/login` | Halaman masuk |
 | `http://127.0.0.1:8000/register` | Halaman daftar |
-| `http://127.0.0.1:8000/dashboard` | Dashboard (butuh login) |
+| `http://127.0.0.1:8000/dashboard` | Dashboard (perlu login) |
 
 ---
 
-## ☁️ Deployment ke Vercel
+## ☁️ Deployment (Vercel)
 
-Proyek ini sudah dikonfigurasi untuk berjalan di Vercel menggunakan runtime `vercel-php`.
-
-### `vercel.json`
+Proyek ini sudah dikonfigurasi untuk berjalan di Vercel menggunakan `vercel-php`. File konfigurasi telah disediakan dalam `vercel.json`.
 
 ```json
 {
@@ -334,44 +327,25 @@ Proyek ini sudah dikonfigurasi untuk berjalan di Vercel menggunakan runtime `ver
 }
 ```
 
-### Langkah Deploy
+Pastikan Anda menyetel environment variables (`APP_KEY`, informasi koneksi `DB_*`, dll) pada dashboard Vercel Anda sebelum melakukan deployment.
 
-1. Push kode ke GitHub
-2. Import repository di [vercel.com](https://vercel.com)
-3. Set **Environment Variables** berikut di dashboard Vercel:
+---
 
-```
-APP_NAME=Pronojiwo Nature Escape
-APP_ENV=production
-APP_KEY=base64:...         ← hasil php artisan key:generate
-APP_DEBUG=false
-APP_URL=https://your-domain.vercel.app
+## 👥 Role Pengguna
 
-DB_CONNECTION=mysql
-DB_HOST=your-db-host
-DB_PORT=3306
-DB_DATABASE=your_db
-DB_USERNAME=your_user
-DB_PASSWORD=your_password
-
-MAIL_MAILER=smtp
-MAIL_HOST=...
-MAIL_PORT=587
-MAIL_USERNAME=...
-MAIL_PASSWORD=...
-```
-
-4. Klik **Deploy** — Vercel akan otomatis menjalankan build
-
-> ⚠️ **Catatan:** Vercel bersifat *stateless*, sehingga file upload disarankan menggunakan layanan penyimpanan eksternal (seperti Cloudinary atau AWS S3) untuk produksi.
+| Role | Akses |
+|------|-------|
+| `pengunjung` | Melihat destinasi, memesan tiket, menulis ulasan, mengirim pesan |
+| `admin` | Kelola destinasi, booking, ulasan, galeri, verifikasi pembayaran, balas pesan |
+| `super_admin` | Akses penuh termasuk manajemen admin, kode promo, dan log aktivitas |
 
 ---
 
 ## 🤝 Kontribusi
 
 1. Fork repository ini
-2. Buat branch baru: `git checkout -b fitur/nama-fitur`
-3. Commit perubahan: `git commit -m 'feat: tambah fitur X'`
+2. Buat branch fitur: `git checkout -b fitur/nama-fitur`
+3. Commit perubahan: `git commit -m 'Tambah fitur X'`
 4. Push ke branch: `git push origin fitur/nama-fitur`
 5. Buat Pull Request
 
@@ -379,19 +353,19 @@ MAIL_PASSWORD=...
 
 ## 📄 Lisensi
 
-Proyek ini dibuat untuk keperluan akademik dan pengembangan pariwisata lokal Kecamatan Pronojiwo, Kabupaten Lumajang, Jawa Timur.
+Proyek ini dibuat untuk keperluan akademik dan pengembangan wisata lokal Pronojiwo, Lumajang, Jawa Timur.
 
 ---
 
-## 📍 Tentang Pronojiwo
+## 📍 Lokasi
 
 **Kecamatan Pronojiwo, Kabupaten Lumajang, Jawa Timur, Indonesia**
 
-Pronojiwo adalah kecamatan yang terletak di kaki Gunung Semeru dengan kekayaan alam luar biasa. Kawasan ini menjadi rumah bagi Air Terjun Tumpak Sewu yang monumental, hutan pinus yang asri, dan panorama pegunungan yang memukau — menjadikannya salah satu destinasi ekowisata terbaik di Jawa Timur.
+Pronojiwo dikenal sebagai salah satu kawasan alam terbaik di Jawa Timur, dengan Air Terjun Tumpak Sewu yang sering dijuluki *"Niagara-nya Indonesia"* sebagai daya tarik utamanya.
 
 ---
 
 <div align="center">
   <p>Dibuat dengan ❤️ untuk mempromosikan keindahan alam Pronojiwo</p>
-  <p><strong>© 2026 Pronojiwo Nature Escape</strong></p>
+  <p><strong>© 2025 Pronojiwo Nature Escape</strong></p>
 </div>
