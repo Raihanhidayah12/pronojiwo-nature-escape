@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Head, Link } from "@inertiajs/react";
+import { Head, Link, router } from "@inertiajs/react";
 
 // Curated Unsplash fallback images mapping based on index or name
 const getDestImage = (dbPhoto, index) => {
@@ -26,92 +26,7 @@ const getDestCategory = (name) => {
     return "Wisata Alam";
 };
 
-const defaultDestinations = [
-    {
-        id: 1,
-        name: "Air Terjun Tumpak Sewu",
-        location: "Desa Sidomulyo, Pronojiwo",
-        category: "Air Terjun",
-        rating: 4.9,
-        reviewCount: 120,
-        image: "https://images.unsplash.com/photo-1627856013091-fed6e4e30025?auto=format&fit=crop&w=800&q=80",
-        description: "Air terjun spektakuler setinggi 120 meter dengan pemandangan menakjubkan, sering dijuluki 'Niagara-nya Indonesia'. Dikelilingi oleh tebing hijau melingkar yang megah.",
-        price: 20000,
-        capacity: 200,
-        facilities: ["Pemandu lokal", "Gazebo santai", "Spot foto", "Warung makan", "Area parkir", "Toilet umum"],
-        coordinates: "8.2291° S, 112.9157° E"
-    },
-    {
-        id: 2,
-        name: "Panorama Kapas Biru",
-        location: "Pronojiwo, Lumajang",
-        category: "Panorama",
-        rating: 4.7,
-        reviewCount: 85,
-        image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
-        description: "Pemandangan bukit hijau dengan kabut pagi yang memesona. Spot foto terbaik untuk menikmati sunrise di atas awan berlatar belakang Gunung Semeru.",
-        price: 15000,
-        capacity: 150,
-        facilities: ["Spot foto estetik", "Camping area", "Pemandangan sunrise", "Warung lokal"],
-        coordinates: "8.2195° S, 112.9234° E"
-    },
-    {
-        id: 3,
-        name: "Air Terjun Kapas Biru",
-        location: "Desa Tumpak Sewu, Pronojiwo",
-        category: "Air Terjun",
-        rating: 4.8,
-        reviewCount: 98,
-        image: "https://images.unsplash.com/photo-1432406186267-e85d9921434f?auto=format&fit=crop&w=800&q=80",
-        description: "Air terjun tersembunyi dengan kolam alami yang jernih dan segar di kelilingi tebing tinggi kemerahan. Tempat ideal untuk rekreasi air dan relaksasi pikiran.",
-        price: 15000,
-        capacity: 100,
-        facilities: ["Kolam alami", "Jalur trekking aman", "Gazebo istirahat", "Mushola", "Warung kopi"],
-        coordinates: "8.2324° S, 112.9212° E"
-    },
-    {
-        id: 4,
-        name: "Kabut Pelangi",
-        location: "Pronojiwo, Lumajang",
-        category: "Air Terjun",
-        rating: 4.8,
-        reviewCount: 74,
-        image: "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?auto=format&fit=crop&w=800&q=80",
-        description: "Fenomena pelangi magis di tengah kabut percikan air terjun setinggi 100 meter. Terjadi setiap pagi hari ketika cahaya matahari menembus butiran kabut air.",
-        price: 10000,
-        capacity: 120,
-        facilities: ["Spot pelangi alami", "Warung camilan", "Spot foto", "Toilet"],
-        coordinates: "8.2201° S, 112.9305° E"
-    },
-    {
-        id: 5,
-        name: "Hutan Pinus Pronojiwo",
-        location: "Pronojiwo, Lumajang",
-        category: "Hutan",
-        rating: 4.6,
-        reviewCount: 52,
-        image: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80",
-        description: "Hutan pinus rindang dengan udara sejuk pegunungan yang sangat bersih. Tempat ideal untuk camping keluarga, berfoto, dan menikmati ketenangan hutan pinus.",
-        price: 10000,
-        capacity: 300,
-        facilities: ["Area camping", "Ayunan & hammock", "Spot foto estetik", "Warung makan", "Area parkir"],
-        coordinates: "8.2111° S, 112.9102° E"
-    },
-    {
-        id: 6,
-        name: "Bukit Sriti",
-        location: "Pronojiwo, Lumajang",
-        category: "Panorama",
-        rating: 4.7,
-        reviewCount: 40,
-        image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
-        description: "Bukit dengan pemandangan 360 derajat yang memukau. Dari atas bukit ini, Anda dapat memandangi siluet Gunung Semeru, perbukitan Pronojiwo, dan lautan kabut pagi.",
-        price: 15000,
-        capacity: 100,
-        facilities: ["Spot sunrise & sunset", "Jalur pendakian ringkas", "Gazebo santai", "Area parkir"],
-        coordinates: "8.2045° S, 112.9056° E"
-    }
-];
+
 
 const features = [
     {
@@ -235,8 +150,8 @@ function CustomSelect({ value, onChange, options, placeholder, isDark }) {
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
                 className={`w-full flex items-center justify-between rounded-xl px-4 py-3 text-sm transition-all duration-300 focus:outline-none focus:ring-1 ${isDark
-                        ? 'bg-emerald-950/50 border border-white/20 text-white focus:border-emerald-400 focus:ring-emerald-400'
-                        : 'bg-stone-50 border border-gray-200 text-gray-900 focus:border-emerald-600 focus:ring-emerald-600'
+                    ? 'bg-emerald-950/50 border border-white/20 text-white focus:border-emerald-400 focus:ring-emerald-400'
+                    : 'bg-stone-50 border border-gray-200 text-gray-900 focus:border-emerald-600 focus:ring-emerald-600'
                     }`}
             >
                 <div className="flex items-center gap-2 truncate">
@@ -265,8 +180,8 @@ function CustomSelect({ value, onChange, options, placeholder, isDark }) {
 
             {/* Always mounted with state classes for hardware-accelerated transitions */}
             <div className={`absolute z-50 mt-1.5 w-full rounded-2xl p-2 shadow-2xl border transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] origin-top transform ${isOpen
-                    ? 'opacity-100 scale-100 pointer-events-auto visible translate-y-0'
-                    : 'opacity-0 scale-95 pointer-events-none invisible -translate-y-2'
+                ? 'opacity-100 scale-100 pointer-events-auto visible translate-y-0'
+                : 'opacity-0 scale-95 pointer-events-none invisible -translate-y-2'
                 } ${isDark
                     ? 'bg-[#052217] border-white/10 text-white shadow-emerald-950/80 shadow-2xl'
                     : 'bg-white border-gray-100 text-gray-900 shadow-stone-300/40 shadow-2xl'
@@ -283,8 +198,8 @@ function CustomSelect({ value, onChange, options, placeholder, isDark }) {
                                     setIsOpen(false);
                                 }}
                                 className={`w-full flex items-center justify-between text-left px-3.5 py-2.5 rounded-xl text-xs transition-all duration-200 ${isSelected
-                                        ? isDark ? 'bg-emerald-800/80 text-white font-bold' : 'bg-emerald-50 text-emerald-900 font-black'
-                                        : isDark ? 'hover:bg-white/10 text-white/80' : 'hover:bg-stone-50 text-gray-700'
+                                    ? isDark ? 'bg-emerald-800/80 text-white font-bold' : 'bg-emerald-50 text-emerald-900 font-black'
+                                    : isDark ? 'hover:bg-white/10 text-white/80' : 'hover:bg-stone-50 text-gray-700'
                                     }`}
                             >
                                 <div className="flex items-center gap-2.5 truncate">
@@ -383,8 +298,8 @@ function CustomDatePicker({ value, onChange, isDark }) {
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
                 className={`w-full flex items-center justify-between rounded-xl px-4 py-3 text-sm transition-all duration-300 focus:outline-none focus:ring-1 ${isDark
-                        ? 'bg-emerald-950/50 border border-white/20 text-white focus:border-emerald-400 focus:ring-emerald-400'
-                        : 'bg-stone-50 border border-gray-200 text-gray-900 focus:border-emerald-600 focus:ring-emerald-600'
+                    ? 'bg-emerald-950/50 border border-white/20 text-white focus:border-emerald-400 focus:ring-emerald-400'
+                    : 'bg-stone-50 border border-gray-200 text-gray-900 focus:border-emerald-600 focus:ring-emerald-600'
                     }`}
             >
                 <div className="flex items-center gap-2 truncate">
@@ -408,8 +323,8 @@ function CustomDatePicker({ value, onChange, isDark }) {
 
             {/* Always mounted with state classes for hardware-accelerated transitions */}
             <div className={`absolute z-50 mt-1.5 w-[290px] md:w-[310px] rounded-2xl p-4 shadow-2xl border transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] origin-top-right md:origin-top transform ${isOpen
-                    ? 'opacity-100 scale-100 pointer-events-auto visible translate-y-0'
-                    : 'opacity-0 scale-95 pointer-events-none invisible -translate-y-2'
+                ? 'opacity-100 scale-100 pointer-events-auto visible translate-y-0'
+                : 'opacity-0 scale-95 pointer-events-none invisible -translate-y-2'
                 } ${isDark
                     ? 'bg-[#052217] border-white/10 text-white shadow-emerald-950/85 shadow-2xl right-0 lg:left-0'
                     : 'bg-white border-gray-100 text-gray-900 shadow-stone-300/40 shadow-2xl right-0'
@@ -466,12 +381,12 @@ function CustomDatePicker({ value, onChange, isDark }) {
                                 onClick={() => handleDaySelect(d)}
                                 disabled={d.isPast}
                                 className={`aspect-square w-full text-xs font-bold rounded-lg flex flex-col items-center justify-center relative transition-all duration-200 ${d.isPast
-                                        ? isDark ? 'text-white/20 cursor-not-allowed' : 'text-gray-300 cursor-not-allowed'
-                                        : isSelected
-                                            ? 'bg-gradient-to-br from-amber-400 to-yellow-500 text-emerald-950 font-black shadow-lg shadow-amber-500/20 scale-105'
-                                            : isDark
-                                                ? 'hover:bg-white/10 text-white/80'
-                                                : 'hover:bg-stone-100 text-gray-700'
+                                    ? isDark ? 'text-white/20 cursor-not-allowed' : 'text-gray-300 cursor-not-allowed'
+                                    : isSelected
+                                        ? 'bg-gradient-to-br from-amber-400 to-yellow-500 text-emerald-950 font-black shadow-lg shadow-amber-500/20 scale-105'
+                                        : isDark
+                                            ? 'hover:bg-white/10 text-white/80'
+                                            : 'hover:bg-stone-100 text-gray-700'
                                     }`}
                             >
                                 <span>{d.day}</span>
@@ -487,7 +402,7 @@ function CustomDatePicker({ value, onChange, isDark }) {
     );
 }
 
-export default function WisataAlamPronojiwo({ destinasis = [], reviews = [], stats = {}, canLogin = true, canRegister = true }) {
+export default function WisataAlamPronojiwo({ auth, destinasis = [], reviews = [], stats = {}, canLogin = true, canRegister = true }) {
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [activeTestimonial, setActiveTestimonial] = useState(0);
@@ -506,7 +421,55 @@ export default function WisataAlamPronojiwo({ destinasis = [], reviews = [], sta
     const [bookingSuccess, setBookingSuccess] = useState(false);
     const [createdTicket, setCreatedTicket] = useState(null);
 
+    // Contact Form States
+    const [contactNama, setContactNama] = useState("");
+    const [contactEmail, setContactEmail] = useState("");
+    const [contactSubjek, setContactSubjek] = useState("");
+    const [contactPesan, setContactPesan] = useState("");
+    const [contactLoading, setContactLoading] = useState(false);
+    const [contactSuccess, setContactSuccess] = useState(false);
+
     const statsRef = useRef(null);
+
+    // Process destination list
+    const activeDestinations = destinasis.length > 0
+        ? destinasis.map((d, index) => ({
+            id: d.id,
+            name: d.nama_wisata || "Destinasi Wisata",
+            location: d.lokasi_rute || "Pronojiwo, Lumajang",
+            category: d.kategori || getDestCategory(d.nama_wisata),
+            rating: d.rating || d.rating_asli || 4.8,
+            reviewCount: d.total_review || 0,
+            image: getDestImage(d.foto, index),
+            description: d.deskripsi || "Keindahan alam Pronojiwo yang menakjubkan dan asri.",
+            price: d.harga_tiket || 15000,
+            capacity: d.kapasitas || 150,
+            facilities: d.fasilitas
+                ? d.fasilitas.split(',').map(f => f.trim())
+                : ((d.nama_wisata || "").toLowerCase().includes("sewu")
+                    ? ["Pemandu lokal", "Gazebo santai", "Spot foto", "Warung makan", "Area parkir", "Toilet umum"]
+                    : ["Spot foto estetik", "Camping area", "Gazebo", "Toilet"]),
+            coordinates: (d.nama_wisata || "").toLowerCase().includes("sewu") ? "8.2291° S, 112.9157° E" : "8.2195° S, 112.9234° E"
+        }))
+        : [];
+
+    // Process testimonials list
+    const activeTestimonials = reviews.length > 0
+        ? reviews.map((r) => ({
+            name: r.nama || "Pengunjung Anonim",
+            location: r.destinasi || "Wisata Alam",
+            rating: r.rating || 5,
+            text: r.ulasan || "Pengalaman liburan yang luar biasa di Pronojiwo.",
+            avatar: r.nama ? r.nama.split(" ").map(n => n[0]).join("").toUpperCase().slice(0, 2) : "PA",
+            date: r.created_at || "Baru-baru ini"
+        }))
+        : [];
+
+    // Get current booking selected destination details
+    const selectedBookingDest = activeDestinations.find(d => String(d.id) === String(bookingDestId));
+    const bookingSubtotal = selectedBookingDest ? selectedBookingDest.price * bookingQty : 0;
+    const bookingTax = selectedBookingDest ? Math.round(bookingSubtotal * 0.05) : 0;
+    const bookingTotal = bookingSubtotal + bookingTax;
 
     // Parallax mouse effect for hero section
     useEffect(() => {
@@ -541,9 +504,9 @@ export default function WisataAlamPronojiwo({ destinasis = [], reviews = [], sta
         if (!visibleStats) return;
         const steps = 60;
         let step = 0;
-        const targetWisata = stats.total_destinasi || 6;
-        const targetReview = stats.total_review || 1500;
-        const targetRating = stats.avg_rating || 4.8;
+        const targetWisata = stats.total_destinasi ?? 0;
+        const targetReview = stats.total_review ?? 0;
+        const targetRating = stats.avg_rating ?? 0.0;
 
         const timer = setInterval(() => {
             step++;
@@ -560,11 +523,12 @@ export default function WisataAlamPronojiwo({ destinasis = [], reviews = [], sta
 
     // Auto testimonial slider
     useEffect(() => {
+        if (activeTestimonials.length === 0) return;
         const timer = setInterval(() => {
             setActiveTestimonial((prev) => (prev + 1) % activeTestimonials.length);
         }, 6000);
         return () => clearInterval(timer);
-    }, []);
+    }, [activeTestimonials.length]);
 
     // Format currency
     const formatPrice = (num) => {
@@ -575,72 +539,14 @@ export default function WisataAlamPronojiwo({ destinasis = [], reviews = [], sta
         }).format(num);
     };
 
-    // Process destination list
-    const activeDestinations = destinasis.length > 0
-        ? destinasis.map((d, index) => ({
-            id: d.id,
-            name: d.nama_wisata || "Destinasi Wisata",
-            location: d.lokasi_rute || "Pronojiwo, Lumajang",
-            category: getDestCategory(d.nama_wisata),
-            rating: d.rating || 4.8,
-            reviewCount: d.total_review || (20 + (index * 13)),
-            image: getDestImage(d.foto, index),
-            description: d.deskripsi || "Keindahan alam Pronojiwo yang menakjubkan dan asri.",
-            price: d.harga_tiket || 15000,
-            capacity: d.kapasitas || 150,
-            facilities: (d.nama_wisata || "").toLowerCase().includes("sewu")
-                ? ["Pemandu lokal", "Gazebo santai", "Spot foto", "Warung makan", "Area parkir", "Toilet umum"]
-                : ["Spot foto estetik", "Camping area", "Gazebo", "Toilet"],
-            coordinates: (d.nama_wisata || "").toLowerCase().includes("sewu") ? "8.2291° S, 112.9157° E" : "8.2195° S, 112.9234° E"
-        }))
-        : defaultDestinations;
-
-    // Process testimonials list
-    const activeTestimonials = reviews.length > 0
-        ? reviews.map((r) => ({
-            name: r.nama || "Pengunjung Anonim",
-            location: r.destinasi || "Wisata Alam",
-            rating: r.rating || 5,
-            text: r.ulasan || "Pengalaman liburan yang luar biasa di Pronojiwo.",
-            avatar: r.nama ? r.nama.split(" ").map(n => n[0]).join("").toUpperCase().slice(0, 2) : "PA",
-            date: r.created_at || "Baru-baru ini"
-        }))
-        : [
-            {
-                name: "Andi Pratama",
-                location: "Air Terjun Tumpak Sewu",
-                rating: 5,
-                text: "Pengalaman luar biasa! Air terjun Tumpak Sewu benar-benar memukau. Pemandu wisata sangat profesional dan ramah.",
-                avatar: "AP",
-                date: "2 minggu lalu"
-            },
-            {
-                name: "Sari Dewi",
-                location: "Panorama Kapas Biru",
-                rating: 5,
-                text: "Pronojiwo adalah surga tersembunyi! Alam yang masih asri dan udara yang segar membuat saya ingin kembali lagi.",
-                avatar: "SD",
-                date: "1 bulan lalu"
-            },
-            {
-                name: "Budi Santoso",
-                location: "Air Terjun Kapas Biru",
-                rating: 5,
-                text: "Destinasi yang wajib dikunjungi! Pemandangan bukit dan hutan pinus sangat indah. Pelayanan sangat memuaskan.",
-                avatar: "BS",
-                date: "3 minggu lalu"
-            }
-        ];
-
-    // Get current booking selected destination details
-    const selectedBookingDest = activeDestinations.find(d => String(d.id) === String(bookingDestId));
-    const bookingSubtotal = selectedBookingDest ? selectedBookingDest.price * bookingQty : 0;
-    const bookingTax = selectedBookingDest ? Math.round(bookingSubtotal * 0.05) : 0;
-    const bookingTotal = bookingSubtotal + bookingTax;
-
     // Handle Quick Booking Submit
     const handleQuickBookingSubmit = (e) => {
         e.preventDefault();
+        if (!auth?.user) {
+            alert("Anda harus masuk (login) terlebih dahulu untuk melakukan pemesanan dan pembayaran!");
+            window.location.href = "/login";
+            return;
+        }
         if (!bookingDestId) return alert("Pilih destinasi wisata terlebih dahulu!");
         if (!bookingDate) return alert("Pilih tanggal kunjungan Anda!");
 
@@ -678,6 +584,11 @@ export default function WisataAlamPronojiwo({ destinasis = [], reviews = [], sta
 
     // Direct Booking action from Modal Detail click
     const handleDirectBook = (dest) => {
+        if (!auth?.user) {
+            alert("Anda harus masuk (login) terlebih dahulu untuk melakukan pemesanan dan pembayaran!");
+            window.location.href = "/login";
+            return;
+        }
         setBookingDestId(String(dest.id));
         setBookingQty(1);
         // Default tomorrow
@@ -847,11 +758,11 @@ export default function WisataAlamPronojiwo({ destinasis = [], reviews = [], sta
                     <div className="flex flex-col gap-2">
                         {navLinks.map((link, idx) => {
                             const navMeta = {
-                                beranda:   { desc: 'Gerbang surga alam Pronojiwo',       icon: '🏠', gradient: 'from-emerald-500 to-teal-500',   color: 'text-emerald-300' },
-                                destinasi: { desc: 'Katalog spot petualangan terbaik',   icon: '🏔️', gradient: 'from-teal-500 to-cyan-500',     color: 'text-teal-300' },
-                                tiket:     { desc: 'E-tiket masuk praktis & cepat',      icon: '🎫', gradient: 'from-amber-500 to-orange-500',   color: 'text-amber-300' },
-                                testimoni: { desc: 'Kisah nyata para penjelajah kami',   icon: '💬', gradient: 'from-violet-500 to-purple-500',  color: 'text-violet-300' },
-                                kontak:    { desc: 'Hubungi pramuwisata ramah kami',     icon: '📞', gradient: 'from-rose-500 to-pink-500',     color: 'text-rose-300' },
+                                beranda: { desc: 'Gerbang surga alam Pronojiwo', icon: '🏠', gradient: 'from-emerald-500 to-teal-500', color: 'text-emerald-300' },
+                                destinasi: { desc: 'Katalog spot petualangan terbaik', icon: '🏔️', gradient: 'from-teal-500 to-cyan-500', color: 'text-teal-300' },
+                                tiket: { desc: 'E-tiket masuk praktis & cepat', icon: '🎫', gradient: 'from-amber-500 to-orange-500', color: 'text-amber-300' },
+                                testimoni: { desc: 'Kisah nyata para penjelajah kami', icon: '💬', gradient: 'from-violet-500 to-purple-500', color: 'text-violet-300' },
+                                kontak: { desc: 'Hubungi pramuwisata ramah kami', icon: '📞', gradient: 'from-rose-500 to-pink-500', color: 'text-rose-300' },
                             };
                             const meta = navMeta[link.id] || { desc: '', icon: '🌿', gradient: 'from-emerald-500 to-teal-500', color: 'text-emerald-300' };
 
@@ -896,9 +807,9 @@ export default function WisataAlamPronojiwo({ destinasis = [], reviews = [], sta
                     {/* Decorative stat pills */}
                     <div className={`mt-6 mx-1 grid grid-cols-3 gap-2 transition-all duration-700 ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`} style={{ transitionDelay: '560ms' }}>
                         {[
-                            { label: 'Destinasi', value: '6+', icon: '🌿' },
-                            { label: 'Wisatawan', value: '1.5K+', icon: '👥' },
-                            { label: 'Rating', value: '4.9★', icon: '⭐' },
+                            { label: 'Destinasi', value: `${stats?.total_destinasi || 0}${stats?.total_destinasi > 5 ? '+' : ''}`, icon: '🌿' },
+                            { label: 'Wisatawan', value: `${(stats?.total_review || 0).toLocaleString()}${stats?.total_review > 10 ? '+' : ''}`, icon: '👥' },
+                            { label: 'Rating', value: `${stats?.avg_rating || 0}★`, icon: '⭐' },
                         ].map((stat, i) => (
                             <div key={i} className="flex flex-col items-center py-3 px-2 rounded-xl bg-white/[0.04] border border-white/5">
                                 <span className="text-base mb-1">{stat.icon}</span>
@@ -959,7 +870,7 @@ export default function WisataAlamPronojiwo({ destinasis = [], reviews = [], sta
                 <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-100 select-none scale-105"
                     style={{
-                        backgroundImage: "linear-gradient(180deg, rgba(2, 44, 34, 0.92) 0%, rgba(2, 44, 34, 0.75) 50%, rgba(2, 44, 34, 0.95) 100%), url('/images/download.jpg')",
+                        backgroundImage: "linear-gradient(180deg, rgba(2, 44, 34, 0.92) 0%, rgba(2, 44, 34, 0.65) 40%, rgba(2, 44, 34, 0.90) 80%, rgba(2, 44, 34, 1) 100%), url('/images/download.jpg')",
                         transform: `translate(${mousePosition.x * 0.4}px, ${mousePosition.y * 0.4}px) scale(1.1)`,
                     }}
                 />
@@ -970,43 +881,43 @@ export default function WisataAlamPronojiwo({ destinasis = [], reviews = [], sta
                     <div className="absolute bottom-1/4 right-1/10 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }}></div>
                 </div>
 
-                <div className="relative z-10 max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                <div className="relative z-10 max-w-4xl w-full mx-auto flex flex-col items-center justify-center text-center">
 
                     {/* Hero Text Content */}
-                    <div className="lg:col-span-7 text-left space-y-6">
+                    <div className="flex flex-col items-center space-y-7">
                         <div
-                            className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-950/45 backdrop-blur-md animate-fade-in-up opacity-0"
+                            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-950/45 backdrop-blur-md animate-fade-in-up opacity-0 shadow-lg"
                             style={{ animationDelay: '100ms' }}
                         >
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
                             </span>
-                            <span className="text-emerald-300 text-[10px] font-extrabold tracking-widest uppercase flex items-center gap-1">
+                            <span className="text-emerald-300 text-xs font-extrabold tracking-widest uppercase flex items-center gap-1">
                                 ✦ ECO-PARADISE INDONESIA
                             </span>
                         </div>
 
                         <h1
-                            className="text-5xl md:text-7xl font-bold leading-[1.2] text-white animate-fade-in-up opacity-0"
+                            className="text-5xl md:text-7xl font-bold leading-[1.1] text-white animate-fade-in-up opacity-0"
                             style={{ animationDelay: '250ms' }}
                         >
                             Jelajahi Serpihan
-                            <span className="block font-playfair italic font-medium bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-200 text-transparent bg-clip-text mt-4 mb-2 px-4 -mx-4 py-2 -my-2">
+                            <span className="block font-playfair italic font-medium bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-200 text-transparent bg-clip-text mt-5 mb-3 px-4 -mx-4 py-2 -my-2">
                                 Surga Tersembunyi
                             </span>
                             di Pronojiwo Lumajang
                         </h1>
 
                         <p
-                            className="text-white/80 text-lg md:text-xl leading-relaxed max-w-2xl font-light animate-fade-in-up opacity-0"
+                            className="text-white/80 text-lg md:text-xl leading-relaxed max-w-3xl font-light animate-fade-in-up opacity-0"
                             style={{ animationDelay: '400ms' }}
                         >
                             Rasakan petualangan mistis di jantung Lumajang. Dari canyon air terjun Tumpak Sewu yang kolosal hingga udara pinus yang menenangkan jiwa.
                         </p>
 
                         <div
-                            className="flex flex-wrap gap-4 pt-4 animate-fade-in-up opacity-0"
+                            className="flex flex-wrap justify-center gap-5 pt-6 animate-fade-in-up opacity-0"
                             style={{ animationDelay: '550ms' }}
                         >
                             <a
@@ -1028,180 +939,8 @@ export default function WisataAlamPronojiwo({ destinasis = [], reviews = [], sta
                                 Pesan E-Tiket
                             </a>
                         </div>
-
-                        {/* Minimalist Hero Stats row */}
-                        <div
-                            className="grid grid-cols-3 gap-6 pt-10 border-t border-white/10 max-w-lg animate-fade-in-up opacity-0"
-                            style={{ animationDelay: '700ms' }}
-                        >
-                            <div>
-                                <div className="text-3xl font-black text-white">10+</div>
-                                <div className="text-xs text-white/50 font-bold uppercase tracking-wider mt-1">Destinasi</div>
-                            </div>
-                            <div>
-                                <div className="text-3xl font-black text-white">1.2K+</div>
-                                <div className="text-xs text-white/50 font-bold uppercase tracking-wider mt-1">Pecinta Alam</div>
-                            </div>
-                            <div>
-                                <div className="text-3xl font-black text-white">4.9★</div>
-                                <div className="text-xs text-white/50 font-bold uppercase tracking-wider mt-1">Rating Review</div>
-                            </div>
                         </div>
                     </div>
-
-                    {/* Interactive Live Ticket Booking Card */}
-                    <div className="lg:col-span-5 w-full animate-fade-in-up opacity-0" style={{ animationDelay: '350ms' }}>
-                        <div className="relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-6 md:p-8 shadow-3xl">
-                            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-amber-400 to-yellow-600 opacity-20 blur-2xl rounded-full"></div>
-
-                            {!bookingSuccess ? (
-                                <form onSubmit={handleQuickBookingSubmit} className="space-y-5">
-                                    <div>
-                                        <h3 className="font-playfair text-2xl font-bold text-white mb-1">Tiket Masuk Instan</h3>
-                                        <p className="text-white/60 text-xs">Pesan digital tiket Anda secara langsung & aman.</p>
-                                    </div>
-
-                                    {/* Destination Selector */}
-                                    <div className="space-y-1.5">
-                                        <label className="text-white/80 font-bold text-xs uppercase tracking-wider">Destinasi Wisata</label>
-                                        <CustomSelect
-                                            value={bookingDestId}
-                                            onChange={setBookingDestId}
-                                            options={activeDestinations}
-                                            placeholder="-- Pilih Destinasi --"
-                                            isDark={true}
-                                        />
-                                    </div>
-
-                                    <div className="grid grid-cols-2 gap-4">
-                                        {/* Date Field */}
-                                        <div className="space-y-1.5">
-                                            <label className="text-white/80 font-bold text-xs uppercase tracking-wider">Tanggal Kunjungan</label>
-                                            <CustomDatePicker
-                                                value={bookingDate}
-                                                onChange={setBookingDate}
-                                                isDark={true}
-                                            />
-                                        </div>
-
-                                        {/* Qty field */}
-                                        <div className="space-y-1.5">
-                                            <label className="text-white/80 font-bold text-xs uppercase tracking-wider">Jumlah Tiket</label>
-                                            <div className="flex items-center bg-emerald-950/50 border border-white/20 rounded-xl px-2 py-1.5">
-                                                <button
-                                                    type="button"
-                                                    onClick={() => setBookingQty(Math.max(1, bookingQty - 1))}
-                                                    className="w-8 h-8 rounded-lg bg-white/10 text-white font-bold flex items-center justify-center hover:bg-white/20"
-                                                >
-                                                    -
-                                                </button>
-                                                <span className="flex-1 text-center text-white font-black text-sm">{bookingQty}</span>
-                                                <button
-                                                    type="button"
-                                                    onClick={() => setBookingQty(bookingQty + 1)}
-                                                    className="w-8 h-8 rounded-lg bg-white/10 text-white font-bold flex items-center justify-center hover:bg-white/20"
-                                                >
-                                                    +
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* Cost breakdown */}
-                                    {selectedBookingDest && (
-                                        <div className="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-2 text-xs">
-                                            <div className="flex justify-between text-white/70">
-                                                <span>Harga Tiket:</span>
-                                                <span>{formatPrice(selectedBookingDest.price)} x {bookingQty}</span>
-                                            </div>
-                                            <div className="flex justify-between text-white/70">
-                                                <span>Biaya Pelayanan (5%):</span>
-                                                <span>{formatPrice(bookingTax)}</span>
-                                            </div>
-                                            <div className="border-t border-white/10 pt-2 flex justify-between font-bold text-sm text-amber-300">
-                                                <span>Total Biaya:</span>
-                                                <span className="text-lg text-white font-black">{formatPrice(bookingTotal)}</span>
-                                            </div>
-                                        </div>
-                                    )}
-
-                                    {/* Submit Button */}
-                                    <button
-                                        type="submit"
-                                        className="w-full py-4 rounded-xl bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-300 hover:to-yellow-400 text-emerald-950 font-black text-sm uppercase tracking-widest shadow-xl hover:scale-102 hover:shadow-yellow-500/20 active:scale-98 transition-all duration-300"
-                                    >
-                                        Pesan Tiket Sekarang
-                                    </button>
-                                </form>
-                            ) : (
-                                /* Checkout Ticket success state */
-                                <div className="space-y-6 text-center py-4">
-                                    <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500 flex items-center justify-center mx-auto mb-2 text-3xl animate-bounce">
-                                        ✅
-                                    </div>
-                                    <div>
-                                        <h3 className="font-playfair text-2xl font-bold text-white mb-1">Pemesanan Sukses!</h3>
-                                        <p className="text-emerald-200 text-xs">Tunjukkan QR Code berikut di loket wisata.</p>
-                                    </div>
-
-                                    {/* Ticket Display Card */}
-                                    <div className="print-ticket-card bg-white text-gray-900 rounded-2xl p-5 shadow-2xl border-2 border-amber-300 text-left relative overflow-hidden">
-                                        <div className="absolute top-0 right-0 w-2 h-full bg-gradient-to-b from-amber-400 to-yellow-500"></div>
-
-                                        <div className="flex justify-between items-start border-b border-gray-100 pb-3 mb-3">
-                                            <div>
-                                                <span className="text-[10px] font-bold text-emerald-700 tracking-wider block">WISATA ALAM PRONOJIWO</span>
-                                                <h4 className="font-bold text-sm text-gray-950 truncate max-w-[160px]">{createdTicket?.destination}</h4>
-                                            </div>
-                                            <div className="text-right">
-                                                <span className="text-[10px] text-gray-400 block font-semibold">TICKET CODE</span>
-                                                <span className="font-black text-xs text-amber-600">{createdTicket?.code}</span>
-                                            </div>
-                                        </div>
-
-                                        <div className="grid grid-cols-2 gap-y-3 gap-x-2 text-xs mb-4">
-                                            <div>
-                                                <span className="text-gray-400 block text-[9px] uppercase font-semibold">Tanggal</span>
-                                                <span className="font-bold text-gray-800">{createdTicket?.date}</span>
-                                            </div>
-                                            <div>
-                                                <span className="text-gray-400 block text-[9px] uppercase font-semibold">Jumlah</span>
-                                                <span className="font-bold text-gray-800">{createdTicket?.quantity} Tiket</span>
-                                            </div>
-                                            <div>
-                                                <span className="text-gray-400 block text-[9px] uppercase font-semibold">Total Bayar</span>
-                                                <span className="font-black text-emerald-700">{formatPrice(createdTicket?.total)}</span>
-                                            </div>
-                                        </div>
-
-                                        {/* Mock QR code container */}
-                                        <div className="flex items-center justify-between border-t border-dashed border-gray-200 pt-3">
-                                            <div className="text-[10px] text-gray-400">
-                                                Scan to verify ticket.<br />
-                                                Powered by E-Pronojiwo.
-                                            </div>
-                                            <div className="w-14 h-14 bg-gray-100 border border-gray-200 rounded-lg p-1 flex items-center justify-center shadow-inner">
-                                                {/* Simulated QR Code pixels */}
-                                                <div className="grid grid-cols-4 gap-0.5 w-full h-full opacity-70">
-                                                    {[...Array(16)].map((_, i) => (
-                                                        <div key={i} className={`rounded-sm ${i % 3 === 0 || i % 5 === 1 ? 'bg-gray-900' : 'bg-transparent'}`} />
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <button
-                                        onClick={resetBookingForm}
-                                        className="px-6 py-2.5 rounded-full border border-white/20 hover:border-white/50 text-white text-xs font-bold transition-all duration-300"
-                                    >
-                                        Pesan Tiket Lain
-                                    </button>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                </div>
 
                 {/* Smooth downward scroll indicator */}
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-70">
@@ -1213,16 +952,16 @@ export default function WisataAlamPronojiwo({ destinasis = [], reviews = [], sta
             </section>
 
             {/* ── STATS / METRICS SECTION ── */}
-            <section ref={statsRef} className="relative py-16 bg-gradient-to-b from-emerald-950 to-white">
-                <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                    <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            <section ref={statsRef} className="relative pt-4 pb-32 bg-emerald-950">
+                <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+                    <div className="bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative overflow-hidden">
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
 
                             {/* Wisata count */}
                             <div className="py-6 md:py-0 md:px-6 space-y-2">
                                 <div className="text-5xl font-black text-amber-300 tracking-tight">
-                                    {counts.wisata}+
+                                    {counts.wisata}{counts.wisata > 5 ? '+' : ''}
                                 </div>
                                 <div className="text-lg font-bold text-white font-playfair italic">Total Destinasi</div>
                                 <p className="text-white/60 text-xs max-w-[200px] mx-auto">Kawasan wisata alam terintegrasi dan teregistrasi.</p>
@@ -1231,7 +970,7 @@ export default function WisataAlamPronojiwo({ destinasis = [], reviews = [], sta
                             {/* Reviews / Visitors count */}
                             <div className="py-6 md:py-0 md:px-6 space-y-2">
                                 <div className="text-5xl font-black text-white tracking-tight">
-                                    {counts.pengunjung.toLocaleString()}+
+                                    {counts.pengunjung.toLocaleString()}{counts.pengunjung > 10 ? '+' : ''}
                                 </div>
                                 <div className="text-lg font-bold text-white font-playfair italic">Review Wisatawan</div>
                                 <p className="text-white/60 text-xs max-w-[200px] mx-auto">Ulasan nyata bintang 4 keatas oleh pelancong.</p>
@@ -1248,6 +987,13 @@ export default function WisataAlamPronojiwo({ destinasis = [], reviews = [], sta
                         </div>
 
                     </div>
+                </div>
+
+                {/* Smooth Wave Divider */}
+                <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+                    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-[50px] md:h-[80px] lg:h-[120px]">
+                        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C52.16,93.36,103.99,86.29,155.82,73.13,209.68,59.39,265.17,67.6,321.39,56.44Z" className="fill-white"></path>
+                    </svg>
                 </div>
             </section>
 
@@ -1788,28 +1534,59 @@ export default function WisataAlamPronojiwo({ destinasis = [], reviews = [], sta
                             <h3 className="font-playfair text-xl font-bold text-gray-950 mb-1">Kirim Pesan Instan</h3>
                             <p className="text-xs text-gray-400 mb-6">Ajukan pertanyaan Anda secara tertulis dan cepat.</p>
 
+                            {contactSuccess && (
+                                <div className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold animate-fade-in flex items-center gap-2">
+                                    <span className="text-sm">✓</span>
+                                    <span>Pesan instan Anda berhasil dikirim! Tim admin kami akan segera merespon via email.</span>
+                                </div>
+                            )}
+
                             <form onSubmit={(e) => {
                                 e.preventDefault();
-                                alert("Pesan Anda telah terkirim! Tim kami akan membalas via surel dalam waktu 1x24 jam.");
-                                e.target.reset();
+                                setContactLoading(true);
+                                router.post('/kontak', {
+                                    nama_lengkap: contactNama,
+                                    email: contactEmail,
+                                    subjek: contactSubjek,
+                                    pesan: contactPesan,
+                                }, {
+                                    onSuccess: () => {
+                                        setContactNama("");
+                                        setContactEmail("");
+                                        setContactSubjek("");
+                                        setContactPesan("");
+                                        setContactLoading(false);
+                                        setContactSuccess(true);
+                                        setTimeout(() => setContactSuccess(false), 6000);
+                                    },
+                                    onError: () => {
+                                        setContactLoading(false);
+                                    }
+                                });
                             }} className="space-y-4">
-                                <div className="grid grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <div className="space-y-1">
                                         <label className="text-xs font-bold text-gray-500">Nama Lengkap</label>
                                         <input
                                             type="text"
+                                            value={contactNama}
+                                            onChange={(e) => setContactNama(e.target.value)}
                                             placeholder="cth: Ahmad Dani"
                                             className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs text-gray-900 focus:outline-none focus:border-emerald-600 transition-all duration-300"
                                             required
+                                            disabled={contactLoading}
                                         />
                                     </div>
                                     <div className="space-y-1">
                                         <label className="text-xs font-bold text-gray-500">Alamat Surel</label>
                                         <input
                                             type="email"
+                                            value={contactEmail}
+                                            onChange={(e) => setContactEmail(e.target.value)}
                                             placeholder="cth: dani@email.com"
                                             className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs text-gray-900 focus:outline-none focus:border-emerald-600 transition-all duration-300"
                                             required
+                                            disabled={contactLoading}
                                         />
                                     </div>
                                 </div>
@@ -1818,9 +1595,12 @@ export default function WisataAlamPronojiwo({ destinasis = [], reviews = [], sta
                                     <label className="text-xs font-bold text-gray-500">Subjek Pertanyaan</label>
                                     <input
                                         type="text"
+                                        value={contactSubjek}
+                                        onChange={(e) => setContactSubjek(e.target.value)}
                                         placeholder="cth: Sewa Guide lokal / Reservasi Homestay"
                                         className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs text-gray-900 focus:outline-none focus:border-emerald-600 transition-all duration-300"
                                         required
+                                        disabled={contactLoading}
                                     />
                                 </div>
 
@@ -1828,17 +1608,29 @@ export default function WisataAlamPronojiwo({ destinasis = [], reviews = [], sta
                                     <label className="text-xs font-bold text-gray-500">Isi Pesan Detail</label>
                                     <textarea
                                         rows="4"
+                                        value={contactPesan}
+                                        onChange={(e) => setContactPesan(e.target.value)}
                                         placeholder="Tuliskan detail pertanyaan atau keluhan Anda di sini..."
                                         className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs text-gray-900 focus:outline-none focus:border-emerald-600 transition-all duration-300 resize-none"
                                         required
+                                        disabled={contactLoading}
                                     ></textarea>
                                 </div>
 
                                 <button
                                     type="submit"
-                                    className="w-full py-3.5 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider shadow-lg hover:scale-[1.01] transition-all duration-300"
+                                    disabled={contactLoading}
+                                    className="w-full py-3.5 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider shadow-lg hover:scale-[1.01] transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50"
                                 >
-                                    Kirim Pesan Sekarang
+                                    {contactLoading ? (
+                                        <>
+                                            <svg className="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                                            </svg>
+                                            Mengirim...
+                                        </>
+                                    ) : "Kirim Pesan Sekarang"}
                                 </button>
                             </form>
                         </div>

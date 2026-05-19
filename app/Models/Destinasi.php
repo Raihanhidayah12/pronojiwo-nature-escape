@@ -10,7 +10,7 @@ class Destinasi extends Model
     protected $primaryKey = 'id_destinasi';
 
     protected $fillable = [
-        'nama_wisata', 'deskripsi', 'lokasi_rute', 'harga_tiket', 'kapasitas_harian', 'status'
+        'nama_wisata', 'kategori', 'deskripsi', 'lokasi_rute', 'harga_tiket', 'kapasitas_harian', 'status', 'fasilitas', 'rating_asli'
     ];
 
     public function bookings()

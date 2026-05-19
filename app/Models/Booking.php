@@ -10,7 +10,7 @@ class Booking extends Model
     protected $primaryKey = 'id_booking';
 
     protected $fillable = [
-        'id_user', 'id_destinasi', 'tanggal_kunjungan', 'jumlah_tiket', 'total_harga', 'status_booking'
+        'id_user', 'id_destinasi', 'id_diskon', 'tanggal_kunjungan', 'jumlah_tiket', 'total_harga', 'potongan_diskon', 'status_booking'
     ];
 
     // Relasi balik ke User
@@ -23,6 +23,12 @@ class Booking extends Model
     public function destinasi()
     {
         return $this->belongsTo(Destinasi::class, 'id_destinasi', 'id_destinasi');
+    }
+
+    // Relasi ke Discount
+    public function discount()
+    {
+        return $this->belongsTo(Discount::class, 'id_diskon', 'id_diskon');
     }
 
     // Relasi One-to-One ke Pembayaran

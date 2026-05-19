@@ -23,13 +23,16 @@ class DestinasiController extends Controller
                 return [
                     'id'          => $d->id_destinasi,
                     'nama_wisata' => $d->nama_wisata,
+                    'kategori'    => $d->kategori,
                     'deskripsi'   => $d->deskripsi,
                     'lokasi_rute' => $d->lokasi_rute,
                     'harga_tiket' => $d->harga_tiket,
                     'kapasitas'   => $d->kapasitas_harian,
                     'foto'        => $d->galeris->first()?->url_foto ?? null,
-                    'rating'      => round($d->reviews_avg_rating ?? 0, 1),
+                    'rating'      => round($d->reviews_avg_rating ?? $d->rating_asli ?? 4.8, 1),
                     'total_review'=> $d->reviews_count,
+                    'fasilitas'   => $d->fasilitas,
+                    'rating_asli' => $d->rating_asli,
                 ];
             });
 
@@ -41,7 +44,7 @@ class DestinasiController extends Controller
             ->map(function ($r) {
                 return [
                     'id'           => $r->id_review,
-                    'nama'         => $r->user->name,
+                    'nama'         => $r->user->nama_lengkap ?? 'Pengunjung',
                     'ulasan'       => $r->ulasan,
                     'rating'       => $r->rating,
                     'destinasi'    => $r->destinasi->nama_wisata,
@@ -62,5 +65,28 @@ class DestinasiController extends Controller
             'canLogin'   => \Illuminate\Support\Facades\Route::has('login'),
             'canRegister'=> \Illuminate\Support\Facades\Route::has('register'),
         ]);
+    }
+
+    /**
+     * Kirim Pesan Instan dari Pengunjung
+     */
+    public function storeMessage(\Illuminate\Http\Request $request)
+    {
+        $request->validate([
+            'nama_lengkap' => 'required|string|max:255',
+            'email'        => 'required|email|max:255',
+            'subjek'       => 'required|string|max:255',
+            'pesan'        => 'required|string',
+        ]);
+
+        \App\Models\Pesan::create([
+            'nama_lengkap' => $request->nama_lengkap,
+            'email'        => $request->email,
+            'subjek'       => $request->subjek,
+            'pesan'        => $request->pesan,
+            'status'       => 'belum_dibalas',
+        ]);
+
+        return redirect()->back()->with('success', 'Pesan instan Anda berhasil dikirim! Tim kami akan segera merespon.');
     }
 }

@@ -10,7 +10,7 @@ class Review extends Model
     protected $primaryKey = 'id_review';
 
     protected $fillable = [
-        'id_user', 'id_destinasi', 'rating', 'ulasan'
+        'id_user', 'id_destinasi', 'id_booking', 'rating', 'ulasan'
     ];
 
     public function user()
